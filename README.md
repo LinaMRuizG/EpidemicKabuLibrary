@@ -11,7 +11,8 @@
 * `kabuPeaksValleys.py` is a module to estimate the Peaks and Valleys. You could set an optional **threshold** to filter the cut days and the most significant peaks. There is a file called **configuration** that gives you and idea of the magnitude of this value.
 
 **NOTE1:** *This project was made in* ***Python 3.10.6***
-**NOTE2:**Most complete repository with examples is in **https://github.com/LinaMRuizG/EpidemicKabu**
+
+**NOTE2:** *Most complete repository with examples is in* **https://github.com/LinaMRuizG/EpidemicKabu**
 
 
 ## Contributing
