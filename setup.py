@@ -10,7 +10,7 @@ setup(
     description="New methodology to identify waves, peaks, and valleys from epidemic curve",
     #long_description=description,
     #long_description_content_type="text/markdown",
-    #url="https://github.com/LinaMRuizG/EpidemicKabu",
+    url="https://github.com/LinaMRuizG/EpidemicKabuLibrary",
     author="Lina M. Ruiz G. and Anderson A. Ruales B.",
     #author_email="<lina.ruiz2@udea.edu.co>",
     license = 'MIT',
