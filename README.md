@@ -1,43 +1,41 @@
 # Kabu a new method to identify epidemic waves and their peaks and valleys
 
-***Kabu*** is a new methodology to identify waves, peaks, and valleys from epidemic curve
+***Kabu*** is a new methodology to identify waves, peaks, and valleys from epidemic curve. The algorithm in explain in **doi:..** as well as some examples.
 
 ## Description of files in this repository:
 
-* `kabu.py` is the main module. It makes the necessary calculations for the subsequent identification of waves, and peaks and valleys. The main input is a dataset with two variables (i.e., **daily cases**, and **dates of report**) and the **kernel** to smooth the epidemic curve with a Gaussian filter.
+1. `epidemickabu/` contains the modules of the package:
 
-* `kabuWaves.py` is a module to estimate the waves. You could set an optional **threshold** to filter the cut days and the most significant waves. There is a file called **configuration** that gives you and idea of the magnitude of this value.
+   * `kabu.py` is the main module. It makes the necessary calculations for the subsequent identification of waves, and peaks and valleys. The main input is a dataset with two variables (i.e., **daily cases**, and **dates of report**) and the **kernel** to smooth the epidemic curve with a Gaussian filter.
 
-* `kabuPeaksValleys.py` is a module to estimate the Peaks and Valleys. You could set an optional **threshold** to filter the cut days and the most significant peaks. There is a file called **configuration** that gives you and idea of the magnitude of this value.
+   * `kabuWaves.py` is a module to estimate the waves. You could set an optional **threshold** to filter the cut days and thefore the waves. There is a file **examples/data/configurationFile.csv** that gives you and idea of the magnitude of this value. You can also filter the waves changing the **kernel**'s value.
+
+   * `kabuPeaksValleys.py` is a module to estimate the Peaks and Valleys of each identified wave.
+     
+2. `examples/` contains the files to replicate examples of how to use the library:
+   * `data/` is the input data.
+   * `dataframes/` is created to save the output dataframes.
+   * `plots/` is created to save the output plots.
+   * `exampleUseLibrary.ipynb` shows basic examples to use the library.
+   * `exploringLibrary/.ipynb` explores attributes and methods in the library.
+   * The other files show the steps for some analysis made with the results obtained with the library.
+
+3. `test/` contains the files to test the library.
+
+4. `additional/` contains some notebooks showing the step by step of the algorithm.
 
 ## Installation
 
 **NOTE:** *This project was made in* ***Python 3.10.6***
 
-0. Create a folder to put the project and the virtual enviroment
-
-1. Clone the repository inside the folder
+1. Install the library using `pip`
    ```sh 
-   git clone https://github.com/LinaMRuizG/Kabu.git
+   pip install epidemickabu
    ```
-2. Create the virtual enviroment inside the same folder 
+2. Import the library
    ```sh 
-   virtualenv venv
+   import epidemickabu as ek
    ```
-3. Activate the virtual environment
-   ```sh 
-   source /path/to/venv/bin/activate
-   ```
-3. Install the required libraries 
-   ```sh 
-   pip install -r requirements.txt
-   ```
-
-
-## Running
-
-Use the `exexution.py` to run the code and set the **database path** and parameters such as **kernel**.
-
 
 ## Contributing
 
