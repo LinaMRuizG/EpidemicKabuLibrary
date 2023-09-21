@@ -8,7 +8,7 @@ class peaksValleys(waves):
     A draw of this workflow in https://github.com/LinaMRuizG/EpidemicKabu/tree/main/paper/figures
      """
 
-    def __init__(self,dataframe,datesName,casesName,kernel1,kernel2,plotName,dfName,outFolderPlot = "./plots/",outFolderDF="./dataframes/",thresholdPV=0):
+    def __init__(self,dataframe,datesName,casesName,kernel1,kernel2,plotName,dfName,outFolderPlot = "./plots/",outFolderDF="./dataframes/"):
         
         """The arguments to make an instance are:
          1. dataframe: DataFrame with the dates and the number of cases by date
@@ -18,11 +18,10 @@ class peaksValleys(waves):
          5. plotName: The name for the output plot and file of the plot
          6. dfName: The name for the output dataframe. This dataframe has the inital dates and number of cases and it is added a column for the normalized values and smoothed values
          7. outFolderPlot: The directory to put the output plot. The default is ./plots/, be sure of create it
-         8. outFolderDF: The directory to put the output dataframe. The default is ./dataframes/, be sure of create it
-         9. thresholdPV: It is used to filter the peaks and valleys""" 
+         8. outFolderDF: The directory to put the output dataframe. The default is ./dataframes/, be sure of create it"""
         
         super().__init__(dataframe,datesName,casesName,kernel1,kernel2,plotName,dfName,outFolderPlot,outFolderDF,thresholdW=None)
-        self.thresholdPV = thresholdPV
+        
 
     def idenCutPointsPV(self,inputToFindCuts,outputName): 
 

@@ -8,7 +8,7 @@ class waves(curves):
     points according to a threshold with the method idenPreviousDatesW(). A draw of this workflow in https://github.com/LinaMRuizG/EpidemicKabu/tree/main/paper/figures
      """
         
-    def __init__(self,dataframe,datesName,casesName,kernel1,kernel2,plotName,dfName,outFolderPlot = "./plots/",outFolderDF="./dataframes/",thresholdW=0):
+    def __init__(self,dataframe,datesName,casesName,kernel1,kernel2,plotName,dfName,outFolderPlot = "./plots/",outFolderDF="./dataframes/",thresholdW=float('inf')):
         
         """The arguments to make an instance are:
          1. dataframe: DataFrame with the dates and the number of cases by date
@@ -73,7 +73,7 @@ class waves(curves):
 
         self.cutDatesW = df[df[self.dN].isin(self.cutDatesW)].reset_index(drop = True)
         #selects from df the rows belonging to cutDatesW
-        self.cutDatesW = self.cutDatesW.agg(lambda x : x[self.dN] if  x["SecondDerivate"] > thresholdW else [],axis=1)
+        self.cutDatesW = self.cutDatesW.agg(lambda x : x[self.dN] if  x["SecondDerivate"] < thresholdW else [],axis=1)
         #selects the dates in cutDatesW for which the second derivative is higher than the thresholdW
         self.cutDatesW = pd.to_datetime(self.cutDatesW.explode())
         #changes the [] by NaT and puts dates in the correct format 
@@ -118,7 +118,7 @@ class waves(curves):
         
         self.idenCutPointsW("FirstDerivateSmoothed","rollingFDS")
         self.idenPreviousDatesW("rollingFDS","FirstDerivateSmoothed")
-        #jself.thresholdPos()
+        self.thresholdPos()
         
         
         df = self.df[[self.dN,self.cN,"SmoothedCases","cutDatesW"]]
