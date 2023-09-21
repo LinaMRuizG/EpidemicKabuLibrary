@@ -6,21 +6,21 @@
 
 1. `epidemickabu/` contains the modules of the package:
 
-   * `kabu.py` is the main module. It makes the necessary calculations for the subsequent identification of waves, and peaks and valleys. The main input is a dataset with two variables (i.e., **daily cases**, and **dates of report**) and the **kernel** to smooth the epidemic curve with a Gaussian filter.
+   * `kabu.py` is the main module. It makes the necessary calculations for the subsequent identification of waves, and peaks and valleys. The main input is a dataset with two variables (i.e., **cases**, and **dates**) and the **kernels** to smooth both the epidemic curve and its first derivative with a Gaussian filter.
 
-   * `kabuWaves.py` is a module to estimate the waves. You could set an optional **threshold** to filter the cut days and thefore the waves. There is a file **examples/data/configurationFile.csv** that gives you and idea of the magnitude of this value. You can also filter the waves changing the **kernel**'s value.
+   * `kabuWaves.py` is a module to estimate the waves. You could set an optional **threshold** to filter the days delimiting the waves. There are some examples in **examples/** that give you and idea of the magnitude of this value. You can also filter the waves changing the **kernel**'s value.
 
    * `kabuPeaksValleys.py` is a module to estimate the Peaks and Valleys of each identified wave.
      
-2. `examples/` contains the files to replicate examples of how to use the library:
-   * `data/` is the input data.
+2. `examples/` contains the files to replicate examples of how to use the library. The examples are made with COVID-19 data for 15 countries:
+   * `data/` is the input data used in all the research.
    * `dataframes/` is created to save the output dataframes.
    * `plots/` is created to save the output plots.
    * `exampleUseLibrary.ipynb` shows basic examples to use the library.
-   * `exploringLibrary/.ipynb` explores attributes and methods in the library.
-   * The other files show the steps for some analysis made with the results obtained with the library.
+   * `exploringLibrary/.ipynb` explores attributes and methods from the classes in the library.
+   * The other files show the steps for some analysis made with the results obtained with the library for COVID-19 data.
 
-3. `test/` contains the files to test the library.
+3. `test/` contains the files to test the code.
 
 4. `additional/` contains some notebooks showing the step by step of the algorithm.
 
