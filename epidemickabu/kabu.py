@@ -7,7 +7,7 @@ pd.set_option('mode.chained_assignment', None)
 
 class curves:
     
-    """curves is the class from kabu module in the EpidemicKabu library. The main workflow of this class is to normalize the epidemic curve, smooth it with a Gaussian kernel, and estimate the first and second derivative of the smoothed curve. The main workflow of this class is to normalize, smooth with a Gaussian kernel, and estimate the first and second derivative of the epidemic curve. A draw of this workflow in https://github.com/LinaMRuizG/EpidemicKabu/tree/main/paper/figures"""
+    """curves is the class from kabu module in the EpidemicKabu library. The main workflow of this class is to normalize the epidemic curve, smooth it with a Gaussian kernel, and estimate the first and second derivative of the smoothed curve. The main workflow of this class is to normalize, smooth with a Gaussian kernel, and estimate the first and second derivative of the epidemic curve. A draw of this workflow in the research paper"""
 
     def __init__(self,dataframe,datesName,casesName,kernel1,kernel2,plotName,dfName,outFolderPlot = "./plots/",outFolderDF="./dataframes/"):
 
@@ -15,7 +15,7 @@ class curves:
          1. dataframe: DataFrame with the dates and the number of cases by date
          2. datesName: Name of the column with the dates which are strings 
          3. casesName: Name of the column with the cases by each date
-         4. kernel: value of the parameters to apply the Gaussian kernel.The kernel could be an int or it could be a list with [df,c1,v1,c2],where df is a dataframe with a column c1 with a values v1 and a column c2. In this way you could use a configuration file with the kernels as in https://github.com/LinaMRuizG/EpidemicKabu/blob/main/exampleUseLibrary/data/configurationFile.csv
+         4. kernel: value of the parameters to apply the Gaussian kernel.The kernel could be an int or it could be a list with [df,c1,v1,c2],where df is a dataframe with a column c1 with a values v1 and a column c2. In this way you could use a configuration file with the kernels as in https://github.com/LinaMRuizG/EpidemicKabuLibrary/blob/main/examples/data/configurationFile.csv
          5. plotName: The name for the output plot and file of the plot
          6. dfName: The name for the output dataframe. This dataframe has the inital dates and number of cases and it is added a column for the normalized values and smoothed values
          7. outFolderPlot: The directory to put the output plot. The default is ./plots/, be sure of create it
@@ -56,7 +56,7 @@ class curves:
 
     def __gettingKernel(self,kernel):
 
-        """It gets the kernel value. The kernel could be a int or it could be a list with [df,c1,v1,c2], where df is the dataframe with the kernels, c1 is the name of the column with the values from which filtering the kernel (it could have the countries names), v1 is the value to be selected from c1, c2 is the name of the column with the values of the kernels. In this way you could use a configuration file with the kernels as in https://github.com/LinaMRuizG/EpidemicKabu/blob/main/exampleUseLibrary/data/configurationFile.csv"""
+        """It gets the kernel value. The kernel could be a int or it could be a list with [df,c1,v1,c2], where df is the dataframe with the kernels, c1 is the name of the column with the values from which filtering the kernel (it could have the countries names), v1 is the value to be selected from c1, c2 is the name of the column with the values of the kernels. In this way you could use a configuration file with the kernels as in https://github.com/LinaMRuizG/EpidemicKabuLibrary/blob/main/examples/data/configurationFile.csv"""
 
     
         if isinstance(kernel,(int,float)):
@@ -78,8 +78,7 @@ class curves:
 
     def curveSmoothing(self,inputToSmooth,outputSmoothed,k):
 
-        """It smooths any column (i.e.,inputToSmooth) in the dataframe using gaussian_filter 
-        function. The result is a new column (i.e., outputSmoothed) in the dataframe """
+        """It smooths any column (i.e.,inputToSmooth) in the dataframe using gaussian_filter function. The result is a new column (i.e., outputSmoothed) in the dataframe """
 
         kernel = self.__gettingKernel(k)
         df = self.df
@@ -88,8 +87,7 @@ class curves:
     
     def curveSmoothing2(self,inputToSmooth,outputSmoothed,k):
         
-        """It smooths any column (i.e.,inputToSmooth) in the dataframe using a Gaussian kernel
-        function. The result is a new column (i.e., outputSmoothed) in the dataframe """
+        """It smooths any column (i.e.,inputToSmooth) in the dataframe using a Gaussian kernel function. The result is a new column (i.e., outputSmoothed) in the dataframe """
 
         kernel = self.__gettingKernel(k)
         smoothed_cases = []
@@ -104,8 +102,7 @@ class curves:
     
     def discreteDerivative(self,inputToDerivate,outputDerivate):
         
-        """It makes a discrete derivate of any column (i.e., inputToDerivate) in the dataframe. The result is a new column (i.e., outputDerivate)
-          in the dataframe"""
+        """It makes a discrete derivate of any column (i.e., inputToDerivate) in the dataframe. The result is a new column (i.e., outputDerivate) in the dataframe"""
         
         df = self.df
         df.loc[:,outputDerivate] = df[inputToDerivate].rolling(2).agg(lambda x : x.iloc[1]-x.iloc[0])
@@ -144,9 +141,7 @@ class curves:
 
     def run(self):
 
-        """It run all the class methods in the correct order to make the main workflow of this class.
-        It creates the output variables that will be part of the a dataframe to be used in the kabuWaves 
-        and kabuPeakValleys modules"""
+        """It run all the class methods in the correct order to make the main workflow of this class. It creates the output variables that will be part of the a dataframe to be used in the kabuWaves and kabuPeakValleys modules"""
 
         self.stansardizingDates()
 
