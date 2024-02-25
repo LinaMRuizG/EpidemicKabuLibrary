@@ -8,7 +8,7 @@ class waves(curves):
     points according to a threshold with the method idenPreviousDatesW(). A draw of this workflow in the research paper
      """
         
-    def __init__(self,dataframe,datesName,casesName,kernel1,kernel2,plotName,dfName,outFolderPlot = "./plots/",outFolderDF="./dataframes/",thresholdW=float('inf')):
+    def __init__(self,dataframe,datesName,casesName,kernel1,kernel2,plotName,dfName,outFolderPlot = "./plots/",outFolderDF="./dataframes/",thresholdW=1):
         
         """The arguments to make an instance are:
          1. dataframe: DataFrame with the dates and the number of cases by date

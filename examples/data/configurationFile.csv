@@ -1,19 +1,16 @@
-Country,Code,kernel1,Kernel2,Kernel3
-Belgium,BE,20,20,27
-Bolivia,BO,18,18,27
-Brazil,BR,50,50,27
-Colombia,CO,35,35,27
-Costa Rica,CR,25,25,27
-Iran,IR,29,29,27
-Italy,IT,29,29,27
-Luxembourg,LU,28,28,27
-Norway,NO,38,38,29
-Republic of Korea,KR,40,40,29
-Romania,RO,20,20,29
-United Kingdom,GB,20,20,29
-United States,US,24,24,29
-Bosnia,BA,30,30,27
-Croatia,HR,20,20,27
-Ireland,IE,22,22,27
-Spain,ES,30,30,27
-Turkiye,TR,27,27,27
+Country,Code,kernel1,Kernel2
+Belgium,BE,20.8,20.8
+Bosnia,BA,31,31
+Brazil,BR,47.4,47.4
+Colombia,CO,43.6,43.6
+Croatia,HR,16.2,16.2
+Ireland,IE,23.8,23.9
+Italy,IT,30,30
+Luxembourg,LU,29.7,29.7
+Norway,NO,52.8,52.8
+Republic of Korea,KR,43.4,43.4
+Romania,RO,25.2,25.2
+United Kingdom,GB,24,24
+United States,US,20.3,20.3
+Spain,ES,27.6,27.6
+Turkiye,TR,28,28
