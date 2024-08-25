@@ -24,7 +24,7 @@
 
 4. `additional/` contains some notebooks showing the step by step of the algorithm.
 
-## Installation
+## Installation in Python
 
 **NOTE:** *This project was made in* ***Python 3.10.6***
 
@@ -35,6 +35,34 @@
 2. Import the library
    ```sh 
    import epidemickabu as ek
+   ```
+
+## Installation in R
+
+
+1. Install and load the package `reticulate` which provides an interface between R and Python
+   ```sh 
+   install.packages("reticulate")
+   ```
+   and
+   ```sh 
+   library(reticulate)
+   ```
+2. Configure Python Environment
+   ```sh 
+   use_python("/path/to/python")
+   ```
+   or
+   ```sh 
+   use_virtualenv("/path/to/your/virtualenv")
+   ```
+3. Install and import the package `EpidemicKabu`
+   ```sh 
+   py_install("epidemickabu")
+   ```
+   and
+   ```sh 
+   ek <- import("EpidemicKabu")
    ```
 
 ## Contributing
