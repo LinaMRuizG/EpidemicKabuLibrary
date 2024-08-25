@@ -37,10 +37,14 @@ dfNamePV = "Epidemic_curve_Colombia_PV"
 outFolderPlot= "/Users/linaruiz/Documents/EpidemicKabuR/plots/"
 outFolderDF= "/Users/linaruiz/Documents/EpidemicKabuR/dataframes/"
 
+# kernels
+kernel1=35
+kernel2=30
+
 # waves
-example = ek$waves(databaseCOLOMBIA,datesName,casesName,35,30,plotNameW,dfNameW)
+example = ek$waves(databaseCOLOMBIA,datesName,casesName,kernel1,kernel2,plotNameW,dfNameW)
 example$run()
 
 # peak
-example = ek$peaksValleys(databaseCOLOMBIA,datesName,casesName,35,30,plotNamePV,dfNamePV)
+example = ek$peaksValleys(databaseCOLOMBIA,datesName,casesName,kernel1,kernel2,plotNamePV,dfNamePV)
 example$run()
