@@ -1,4 +1,5 @@
-from .kabuWaves import *
+#from .kabuWaves import *
+from kabuWaves import *
 
 class peaksValleys(waves):
 

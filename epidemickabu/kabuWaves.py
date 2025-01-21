@@ -1,4 +1,5 @@
-from .kabu import *
+#from .kabu import *
+from kabu import *
 
 class waves(curves):
  
@@ -28,7 +29,7 @@ class waves(curves):
     def idenCutPointsW(self,inputToFindCuts,outputCuts):
 
         """For a column (i.e.,inputToFindCuts), it identifies the positions (i.e., rows) with a 
-        positive value for each consecutive pair of positive-negative values (+/-)."""
+        positive value for each consecutive pair of negative-positive values (-/+)."""
 
         df = self.df
 
@@ -46,22 +47,32 @@ class waves(curves):
         negative-positive (i.e., ensuring to select the date associate to the value closest to zero or when the values
         of the column cut the axis in the temporal plot)"""
 
-        df = self.df
+        df = self.df.reset_index(drop=True)
        
-        positions1 = df[df[inputCuts]==True][[self.dN,inputToFindCuts]].reset_index(drop=True)
+        positions1 = df[df[inputCuts]==True][[self.dN,inputToFindCuts]]#.reset_index(drop=True)
         #gets the dates and the values in inputToFindCuts which are True in inputCuts (positive values)
-       
-        positions2 = df[df[self.dN].isin(list(positions1[self.dN] - datetime.timedelta(days=1)))][[self.dN,inputToFindCuts]].reset_index(drop=True)
+        #print("positions1: ",positions1)
+        indices = positions1.index-1
+        #print("indices: ",indices)
+        valid_indices = indices[indices>=0]
+        #print("valid_indices: ",valid_indices)
+
+        positions2 = df.iloc[valid_indices][[self.dN,inputToFindCuts]].reset_index(drop=True)
+        #print("positions2: ",positions2)  
+        #positions2 = df[df[self.dN].isin(list(positions1[self.dN] - datetime.timedelta(days=1)))][[self.dN,inputToFindCuts]].reset_index(drop=True)
         #gets the previous dates of dates in position1 (which are the dates of the negative values). Then, it gets their dates and the values in inputToFindCuts 
         positions2.rename(columns={self.dN:self.dN+"1",inputToFindCuts:inputToFindCuts+"1"},inplace=True)
+        #print("positions2: ",positions2)  
         
-        positions = pd.concat([positions1, positions2], axis=1)
+        positions = pd.concat([positions1.reset_index(drop=True), positions2.reset_index(drop=True)], axis=1)
+        #print("positions: ",positions)  
 
         self.cutDatesW = list(positions.agg(lambda x : x[self.dN] if abs(x[inputToFindCuts])<abs(x[inputToFindCuts+"1"])  else x[self.dN+"1"], axis=1))
         #selects the dates associated to the value of inputToFindCuts (in positions) closest to zero
 
         self.df["cutDatesW"] = self.df[self.dN].isin(self.cutDatesW).astype(int)
         #creates a new column with 1 in the dates selected
+        #print(self.df)
         
           
     def thresholdPos(self):

@@ -34,7 +34,7 @@
    ```
 2. Import the library
    ```sh 
-   import epidemickabu as ek
+   import EpidemicKabu as ek
    ```
 
 ## Installation in R
