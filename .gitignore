@@ -7,5 +7,7 @@ build/
 dist/
 *.egg-info/
 myNotes*
-analysisOfMethod/dataframes/
+analysisOfMethod/dataframes/ 
 analysisOfMethod/plots/
+
+
