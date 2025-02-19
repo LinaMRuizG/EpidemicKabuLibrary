@@ -20,7 +20,7 @@ py_install("epidemickabu")
 ek <- import("EpidemicKabu")
 
 # The dataframe with the columns dates and cases by date
-database = read.csv("/Users/linaruiz/Documents/EpidemicKabu_project/EpidemicKabuLibrary/examples/data/uncoverCountries.csv")
+database = read.csv("/Users/linaruiz/Documents/EpidemicKabu_project/EpidemicKabuLibrary/data/uncoverCountries.csv")
 database = database[,c("Date_reported","Country_code","Country","New_cases")]
 databaseCOLOMBIA=database[database$"Country_code"=="CO",]
 datesName = "Date_reported"
